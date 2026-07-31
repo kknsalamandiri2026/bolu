@@ -2,24 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --primary-color: #ff7a59;
-  --primary-hover: #ff5f38;
-  --secondary-color: #ffdfd3;
-  --accent-color: #ffd0b8;
+  --primary-color: #ff5e36;
+  --primary-hover: #e0441e;
+  --secondary-color: #ffd8c7;
+  --accent-color: #ffb897;
   --text-main: #2d2623;
-  --text-muted: #615551;
+  --text-muted: #5e504b;
   
-  /* Glassmorphism Kontras (Ditingkatkan agar teks sangat terbaca di atas pola background) */
-  --card-bg: rgba(255, 255, 255, 0.85); 
-  --card-border: rgba(255, 255, 255, 0.7);
-  --radius-xl: 40px;
-  --radius-lg: 30px;
-  --radius-md: 20px;
+  /* Glassmorphism Kontras Tinggi */
+  --card-bg: rgba(255, 255, 255, 0.92); 
+  --card-border: #ffffff;
+  --radius-xl: 36px;
+  --radius-lg: 28px;
+  --radius-md: 18px;
   
-  /* Soft Gen-Z Shadows */
-  --shadow-soft: 0 10px 40px -10px rgba(255, 122, 89, 0.12), 0 20px 25px -10px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 30px 60px -15px rgba(255, 122, 89, 0.25), 0 20px 30px -10px rgba(0, 0, 0, 0.05);
-  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Shadows */
+  --shadow-soft: 0 15px 35px -10px rgba(224, 68, 30, 0.18), 0 20px 25px -10px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 28px 55px -12px rgba(224, 68, 30, 0.3), 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -28,48 +28,114 @@
   padding: 0;
 }
 
+/* =========================================================
+   BACKGROUND TOTAL BARU (MODERN & DYNAMIC MESH PATTERN)
+   ========================================================= */
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #fff4e8;
-  
-  /* ── POLA MIKRO-POLKADOT PREMIUM & ELEGAN ── */
-  background-image: 
-    radial-gradient(rgba(255, 122, 89, 0.15) 1.5px, transparent 1.5px), 
-    linear-gradient(135deg, #fdf6ec 0%, #fff4e8 50%, #ffece0 100%);
-  background-size: 24px 24px, 100% 100%;
-  background-attachment: fixed;
-  
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
   position: relative;
+
+  /* 1. GRADASI DASAR (WARM SUNRISE MESH GRADIENT) */
+  background-color: #fff3eb;
+  background-image: 
+    radial-gradient(at 10% 15%, #ffcfb3 0px, transparent 50%),
+    radial-gradient(at 90% 10%, #ffe4b5 0px, transparent 50%),
+    radial-gradient(at 50% 50%, #ffd8be 0px, transparent 60%),
+    radial-gradient(at 80% 85%, #ffbfa3 0px, transparent 50%),
+    radial-gradient(at 15% 85%, #ffe6d5 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
-/* GEN-Z GLOWING BACKGROUND ORBS (Efek bias cahaya lembut di balik pola polkadot) */
-body::before, body::after {
+/* 2. MOTIF CORAK GANDA (GRID DOTS + DIAGONAL LINES) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(#ff6f43 1.8px, transparent 1.8px),
+    linear-gradient(135deg, rgba(255, 110, 67, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 110, 67, 0.05) 50%, rgba(255, 110, 67, 0.05) 75%, transparent 75%, transparent);
+  background-size: 28px 28px, 40px 40px;
+  opacity: 0.35; 
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. ELEMEN DEKORATIF ORB BERCAHAYA DENGAN ANIMASI GLOW */
+.abstract-bg-shapes {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Orb Oranye Kiri Atas */
+.abstract-bg-shapes::before {
   content: "";
   position: absolute;
-  width: 350px;
-  height: 350px;
+  top: 5%;
+  left: -100px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255,107,74,0.4) 0%, rgba(255,107,74,0) 70%);
   border-radius: 50%;
-  filter: blur(100px);
-  z-index: -1;
-  opacity: 0.65;
+  filter: blur(20px);
+  animation: floatOrb1 12s ease-in-out infinite alternate;
+}
+
+/* Orb Peach Kanan Atas/Tengah */
+.abstract-bg-shapes::after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,184,140,0.6) 0%, rgba(255,184,140,0) 70%);
+  border-radius: 50%;
+  filter: blur(25px);
+  animation: floatOrb2 15s ease-in-out infinite alternate;
+}
+
+/* Orb Warm Yellow Kanan Bawah */
+.floating-circle-extra {
+  position: fixed;
+  bottom: -80px;
+  left: 15%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,195,116,0.5) 0%, rgba(255,195,116,0) 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: 0;
   pointer-events: none;
+  animation: floatOrb3 10s ease-in-out infinite alternate;
 }
 
-body::before {
-  background: radial-gradient(circle, #ffd2bc 0%, rgba(255,210,188,0) 70%);
-  top: 15%;
-  right: -50px;
+/* Keyframes Pergerakan Elemen Background */
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(80px, 60px) scale(1.15); }
 }
 
-body::after {
-  background: radial-gradient(circle, #ffe1cc 0%, rgba(255,225,204,0) 70%);
-  bottom: 25%;
-  left: -80px;
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-70px, 80px) scale(0.9); }
 }
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, -50px) scale(1.1); }
+}
+
+/* =========================================================
+   LAYOUT & KOMPONEN WEBSITE
+   ========================================================= */
 
 .app-container {
   max-width: 1100px;
@@ -82,7 +148,7 @@ body::after {
 /* HEADER STYLE */
 .hero-header {
   text-align: center;
-  padding: 40px 20px 60px;
+  padding: 30px 20px 40px;
   position: relative;
 }
 
@@ -90,7 +156,7 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 122, 89, 0.08);
+  background: rgba(255, 255, 255, 0.95);
   color: var(--primary-color);
   padding: 10px 22px;
   border-radius: 100px;
@@ -98,9 +164,9 @@ body::after {
   font-size: 0.8rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 25px;
-  border: 1px solid rgba(255, 122, 89, 0.15);
-  box-shadow: 0 4px 15px rgba(255, 122, 89, 0.05);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 94, 54, 0.25);
+  box-shadow: 0 4px 15px rgba(255, 94, 54, 0.08);
   animation: floatBadge 3s ease-in-out infinite;
 }
 
@@ -113,21 +179,41 @@ body::after {
   font-size: 4rem;
   font-weight: 800;
   line-height: 1.15;
-  background: linear-gradient(135deg, #ff7a59 0%, #ff4e20 50%, #e03207 100%);
+  background: linear-gradient(135deg, #e0441e 0%, #ff5e36 50%, #c43c14 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   letter-spacing: -2.5px;
-  text-shadow: 0 10px 30px rgba(255, 122, 89, 0.1);
+  text-shadow: 0 10px 30px rgba(224, 68, 30, 0.12);
 }
 
 .subtitle {
   font-size: 1.25rem;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
   max-width: 600px;
-  margin: 0 auto;
-  opacity: 0.9;
+  margin: 0 auto 30px;
+}
+
+/* LEGAL BADGES DI HEADER */
+.legal-badges-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.legal-badge {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 94, 54, 0.2);
+  color: var(--text-main);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 /* CARDS GLASSMORPHISM */
@@ -148,7 +234,7 @@ body::after {
 
 .about-card {
   padding: 50px 40px;
-  max-width: 850px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
   position: relative;
@@ -183,8 +269,40 @@ body::after {
   line-height: 1.85;
 }
 
-.about-card p:last-of-type {
-  margin-bottom: 0;
+/* GRID FITUR DI DALAM ABOUT CARD */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 94, 54, 0.15);
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 94, 54, 0.12);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.feature-item h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+
+.feature-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 /* PRODUCTS SECTION */
@@ -226,12 +344,12 @@ body::after {
 }
 
 .product-card:hover {
-  transform: translateY(-12px) scale(1.01);
+  transform: translateY(-10px) scale(1.01);
   box-shadow: var(--shadow-hover);
 }
 
 .product-card:hover::after {
-  border-color: rgba(255, 122, 89, 0.25);
+  border-color: rgba(255, 94, 54, 0.3);
 }
 
 .product-image-wrapper {
@@ -239,7 +357,7 @@ body::after {
   height: 270px;
   overflow: hidden;
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-  background: linear-gradient(135deg, #fffcf8 0%, #ffe9dd 100%);
+  background: linear-gradient(135deg, #fffaf5 0%, #ffe3d3 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,19 +374,36 @@ body::after {
   transform: scale(1.08);
 }
 
+/* LABEL HARGA DI POJOK KIRI ATAS GAMBAR */
 .product-tag {
   position: absolute;
   top: 20px;
   left: 20px;
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, #ff5e36 0%, #e0441e 100%);
   backdrop-filter: blur(5px);
   padding: 8px 18px;
   border-radius: 100px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 800;
-  color: var(--primary-color);
-  box-shadow: 0 8px 20px rgba(255, 122, 89, 0.15);
-  border: 1px solid rgba(255, 122, 89, 0.1);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(224, 68, 30, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* LABEL KEUNGGULAN DI GAMBAR PRODUK */
+.product-badge-overlay {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(45, 38, 35, 0.88);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .product-info {
@@ -276,7 +411,7 @@ body::after {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 100%);
 }
 
 .product-info h3 {
@@ -291,7 +426,6 @@ body::after {
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.7;
-  opacity: 0.9;
 }
 
 /* FOOTER & CONTACT SECTION */
@@ -301,7 +435,7 @@ body::after {
 
 .footer-card {
   padding: 60px 40px;
-  max-width: 650px;
+  max-width: 750px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -317,417 +451,55 @@ body::after {
 .address-text {
   color: var(--text-muted);
   font-size: 1.05rem;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   line-height: 1.6;
 }
 
-/* Tombol WA Premium */
-.whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #25D366 0%, #1cbd57 100%);
-  color: white;
-  text-decoration: none;
-  padding: 18px 45px;
-  font-weight: 800;
-  font-size: 1.1rem;
+/* KOTAK INFORMASI KETENTUAN PEMESANAN & HARGA */
+.order-notes-box {
+  background: rgba(255, 245, 238, 0.85);
+  border: 1px dashed rgba(255, 94, 54, 0.4);
   border-radius: var(--radius-md);
-  box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35);
-  transition: var(--transition-smooth);
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 22px 25px;
+  margin: 25px 0 35px 0;
+  text-align: left;
 }
 
-.whatsapp-btn:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 45px rgba(37, 211, 102, 0.45);
-}
-
-.copyright {
-  margin-top: 50px;
-  font-size: 0.85rem;
-  color: #a39691;
-  letter-spacing: 0.5px;
-}
-
-/* RESPONSIVE DESIGN (MOBILE-FRIENDLY) */
-@media (max-width: 768px) {
-  .app-container {
-    padding: 40px 15px;
-  }
-
-  .main-title {
-    font-size: 2.8rem;
-    letter-spacing: -1.5px;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .about-card {
-    padding: 35px 25px;
-  }
-
-  .about-card h2 {
-    font-size: 1.8rem;
-  }
-
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .product-image-wrapper {
-    height: 240px;
-  }
-
-  .footer-card {
-    padding: 45px 25px;
-  }
-
-  .footer-card h2 {
-    font-size: 1.8rem;
-  }
-
-  .whatsapp-btn {
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-title {
-    font-size: 2.3rem;
-  }
-  
-  .product-image-wrapper {
-    height: 220px;
-  }
-}/* Import font aesthetic modern dari Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --primary-color: #ff7a59;
-  --primary-hover: #ff5f38;
-  --secondary-color: #ffdfd3;
-  --accent-color: #ffd0b8;
-  --text-main: #2d2623;
-  --text-muted: #615551;
-  
-  /* Glassmorphism Kontras (Ditingkatkan agar teks sangat terbaca di atas pola background) */
-  --card-bg: rgba(255, 255, 255, 0.85); 
-  --card-border: rgba(255, 255, 255, 0.7);
-  --radius-xl: 40px;
-  --radius-lg: 30px;
-  --radius-md: 20px;
-  
-  /* Soft Gen-Z Shadows */
-  --shadow-soft: 0 10px 40px -10px rgba(255, 122, 89, 0.12), 0 20px 25px -10px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 30px 60px -15px rgba(255, 122, 89, 0.25), 0 20px 30px -10px rgba(0, 0, 0, 0.05);
-  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #fff4e8;
-  
-  /* ── POLA MIKRO-POLKADOT PREMIUM & ELEGAN ── */
-  background-image: 
-    radial-gradient(rgba(255, 122, 89, 0.15) 1.5px, transparent 1.5px), 
-    linear-gradient(135deg, #fdf6ec 0%, #fff4e8 50%, #ffece0 100%);
-  background-size: 24px 24px, 100% 100%;
-  background-attachment: fixed;
-  
-  color: var(--text-main);
-  min-height: 100vh;
-  overflow-x: hidden;
-  line-height: 1.6;
-  position: relative;
-}
-
-/* GEN-Z GLOWING BACKGROUND ORBS (Efek bias cahaya lembut di balik pola polkadot) */
-body::before, body::after {
-  content: "";
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  filter: blur(100px);
-  z-index: -1;
-  opacity: 0.65;
-  pointer-events: none;
-}
-
-body::before {
-  background: radial-gradient(circle, #ffd2bc 0%, rgba(255,210,188,0) 70%);
-  top: 15%;
-  right: -50px;
-}
-
-body::after {
-  background: radial-gradient(circle, #ffe1cc 0%, rgba(255,225,204,0) 70%);
-  bottom: 25%;
-  left: -80px;
-}
-
-.app-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-/* HEADER STYLE */
-.hero-header {
-  text-align: center;
-  padding: 40px 20px 60px;
-  position: relative;
-}
-
-.header-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 122, 89, 0.08);
-  color: var(--primary-color);
-  padding: 10px 22px;
-  border-radius: 100px;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-  border: 1px solid rgba(255, 122, 89, 0.15);
-  box-shadow: 0 4px 15px rgba(255, 122, 89, 0.05);
-  animation: floatBadge 3s ease-in-out infinite;
-}
-
-@keyframes floatBadge {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.main-title {
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.15;
-  background: linear-gradient(135deg, #ff7a59 0%, #ff4e20 50%, #e03207 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
-  letter-spacing: -2.5px;
-  text-shadow: 0 10px 30px rgba(255, 122, 89, 0.1);
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
-/* CARDS GLASSMORPHISM */
-.card {
-  background: var(--card-bg);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 2px solid var(--card-border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-soft);
-  transition: var(--transition-smooth);
-}
-
-/* ABOUT SECTION */
-.about-section {
-  margin-bottom: 90px;
-}
-
-.about-card {
-  padding: 50px 40px;
-  max-width: 850px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-card h2 {
-  font-size: 2.2rem;
-  color: var(--text-main);
-  margin-bottom: 25px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  position: relative;
-  display: inline-block;
-}
-
-.about-card h2::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 20%;
-  right: 20%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-  border-radius: 10px;
-}
-
-.about-card p {
+.order-notes-box h4 {
   font-size: 1.05rem;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-  line-height: 1.85;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-weight: 800;
 }
 
-.about-card p:last-of-type {
+.order-notes-box ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.order-notes-box li {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.order-notes-box li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.order-notes-box li:last-child {
   margin-bottom: 0;
 }
 
-/* PRODUCTS SECTION */
-.products-section {
-  margin-bottom: 100px;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin-bottom: 50px;
-  color: var(--text-main);
-  letter-spacing: -1.5px;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 35px;
-}
-
-/* CARD PRODUK */
-.product-card {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.product-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-xl);
-  border: 2px solid transparent;
-  transition: var(--transition-smooth);
-  pointer-events: none;
-}
-
-.product-card:hover {
-  transform: translateY(-12px) scale(1.01);
-  box-shadow: var(--shadow-hover);
-}
-
-.product-card:hover::after {
-  border-color: rgba(255, 122, 89, 0.25);
-}
-
-.product-image-wrapper {
-  position: relative;
-  height: 270px;
-  overflow: hidden;
-  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-  background: linear-gradient(135deg, #fffcf8 0%, #ffe9dd 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition-smooth);
-}
-
-.product-card:hover .product-image {
-  transform: scale(1.08);
-}
-
-.product-tag {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(5px);
-  padding: 8px 18px;
-  border-radius: 100px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  box-shadow: 0 8px 20px rgba(255, 122, 89, 0.15);
-  border: 1px solid rgba(255, 122, 89, 0.1);
-}
-
-.product-info {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
-}
-
-.product-info h3 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: 12px;
-  color: var(--text-main);
-  letter-spacing: -0.5px;
-}
-
-.product-desc {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  opacity: 0.9;
-}
-
-/* FOOTER & CONTACT SECTION */
-.footer-section {
-  text-align: center;
-}
-
-.footer-card {
-  padding: 60px 40px;
-  max-width: 650px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.footer-card h2 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 15px;
-  letter-spacing: -1px;
-}
-
-.address-text {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  margin-bottom: 35px;
-  line-height: 1.6;
-}
-
 /* Tombol WA Premium */
 .whatsapp-btn {
   display: inline-flex;
@@ -742,7 +514,7 @@ body::after {
   border-radius: var(--radius-md);
   box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35);
   transition: var(--transition-smooth);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .whatsapp-btn:hover {
@@ -753,7 +525,7 @@ body::after {
 .copyright {
   margin-top: 50px;
   font-size: 0.85rem;
-  color: #a39691;
+  color: #9c8a84;
   letter-spacing: 0.5px;
 }
 
@@ -790,17 +562,21 @@ body::after {
   }
 
   .footer-card {
-    padding: 45px 25px;
+    padding: 45px 20px;
   }
 
   .footer-card h2 {
     font-size: 1.8rem;
   }
 
+  .order-notes-box {
+    padding: 18px 18px;
+  }
+
   .whatsapp-btn {
     width: 100%;
-    padding: 16px 20px;
-    font-size: 1rem;
+    padding: 16px 15px;
+    font-size: 0.95rem;
   }
 }
 

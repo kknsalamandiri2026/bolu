@@ -2,41 +2,67 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  // Data produk disederhanakan menjadi Produk A, B, C, D dengan deskripsi ~400 karakter
   const products = [
     {
       id: 'A',
-      name: 'Produk A',
-      desc: 'Temukan keunikan dan kualitas terbaik dari Produk A yang dirancang khusus untuk memenuhi kebutuhan harian Anda. Kami menggunakan bahan-bahan pilihan berkualitas tinggi yang diproses secara higienis untuk menjamin kepuasan Anda dalam setiap pemakaian. Dengan desain yang elegan dan fungsional, produk ini tidak hanya memberikan manfaat optimal tetapi juga menambah nilai estetika dalam aktivitas Anda sehari-hari.',
-      img: 'produk_1.jpg'
+      name: 'Bolu Emprit',
+      price: 'Rp 6.500 / pack',
+      desc: 'Kue tradisional dengan tekstur renyah dan lumer di mulut. Dibuat menggunakan resep warisan yang diproses higienis tanpa pengawet buatan, sangat cocok untuk teman santai minum teh atau kopi.',
+      img: '/boluemprit.png',
+      badge: 'Tanpa Pengawet'
     },
     {
       id: 'B',
-      name: 'Produk B',
-      desc: 'Produk B hadir sebagai solusi inovatif yang menggabungkan kepraktisan dengan hasil yang maksimal. Dibuat dengan standar kualitas ketat dan dedikasi penuh, produk ini menawarkan performa handal yang dapat Anda andalkan kapan saja. Nikmati pengalaman berbeda yang lebih memuaskan bersama Produk B, pilihan cerdas bagi Anda yang mengutamakan efisiensi dan kualitas tanpa kompromi dalam kehidupan.',
-      img: 'produk_2.jpg'
+      name: 'Osar Asir',
+      price: 'Rp 13.000 / pack',
+      desc: 'Camilan manis nan gurih khas usaha rumahan. Memiliki rasa manis yang pas dan tekstur yang sangat nikmat, menjadi pilihan favorit keluarga untuk dinikmati kapan saja.',
+      img: '/osarasir.png',
+      badge: '100% Halal'
     },
     {
       id: 'C',
-      name: 'Produk C',
-      desc: 'Hadirkan kesempurnaan baru dalam rutinitas Anda dengan menggunakan Produk C. Setiap detail dari produk ini dirancang dengan penuh ketelitian untuk memastikan Anda mendapatkan pengalaman terbaik yang tidak terlupakan. Produk C sangat cocok untuk melengkapi berbagai momen spesial Anda, memberikan kenyamanan ekstra, serta menjadi andalan baru keluarga yang terbukti aman dan berkualitas tinggi.',
-      img: 'produk_3.jpg'
+      name: 'Peyek',
+      price: 'Rp 12.500 / pack',
+      desc: 'Peyek renyah bertabur bumbu rempah pilihan yang kaya cita rasa. Diproduksi fresh setiap hari untuk menjaga krispi dan kelezatannya sampai ke tangan Anda.',
+      img: '/peyek.png',
+      badge: 'Fresh Setiap Hari'
     },
     {
       id: 'D',
-      name: 'Produk D',
-      desc: 'Produk D merupakan mahakarya terbaru kami yang dipersembahkan khusus untuk Anda yang mencari keistimewaan sejati. Memadukan estetika modern dengan fungsi yang luar biasa, produk ini siap mempermudah hari-hari Anda dengan cara yang menyenangkan. Jadikan Produk D sebagai bagian dari gaya hidup modern Anda dan rasakan sendiri perbedaan kualitas nyata yang kami tawarkan dalam setiap detailnya.',
-      img: 'produk_4.jpg'
+      name: 'Widaran',
+      price: 'Rp 12.500 / pack',
+      desc: 'Camilan klasik yang gurih dan renyah di setiap gigitan. Dibuat dengan bahan-bahan alami berkualitas tinggi, menjadikannya camilan yang aman dan bikin nagih.',
+      img: '/widaran.png', // <-- DIBERSIHKAN: Sudah ditambah garis miring (/)
+      badge: 'Rasa Autentik'
+    },
+    {
+      id: 'E',
+      name: 'Kripik Tempe',
+      price: 'Rp 11.000 / pack',
+      desc: 'Olahan tempe pilihan yang diiris tipis dan digoreng hingga renyah sempurna dengan baluran bumbu rempah spesial. Bebas dari pengawet dan kaya nutrisi.',
+      img: '/keripiktempe.png',
+      badge: 'Bahan Alami'
     }
   ];
 
   return (
     <div className="app-container">
+      {/* Background Elemen Lingkaran Putih/Warna Abstrak */}
+      <div className="abstract-bg-shapes"></div>
+      <div className="floating-circle-extra"></div>
+
       {/* HEADER SECTION */}
       <header className="hero-header">
         <div className="header-badge">✨ Welcome to Bolu Emprit 3D</div>
         <h1 className="main-title">Bolu Emprit 3D</h1>
         <p className="subtitle">Sentuhan Tradisi dengan Gaya dan Cita Rasa yang Modern</p>
+        
+        {/* INFO LEGALITAS / PIRT & KEUNGGULAN UTAMA */}
+        <div className="legal-badges-container">
+          <span className="legal-badge">📜 P-IRT No. 2.06.3308.02.2536-25</span>
+          <span className="legal-badge">🏡 Diproduksi Rumahan (Home Industry)</span>
+          <span className="legal-badge">🌿 100% Bahan Alami Tanpa Pengawet</span>
+        </div>
       </header>
 
       {/* ABOUT SECTION */}
@@ -47,8 +73,26 @@ function App() {
             Berawal dari usaha rumahan yang sederhana, <strong>Bolu Emprit 3D</strong> didirikan dengan semangat untuk melestarikan kuliner tradisional dan memperkenalkannya kepada generasi muda. Melalui kreativitas tanpa batas, kami terus berinovasi mengembangkan berbagai produk berkualitas tinggi yang disesuaikan dengan selera modern masa kini.
           </p>
           <p>
-            Kami selalu berkomitmen untuk menggunakan bahan-bahan pilihan terbaik dan menjaga kebersihan proses produksi demi menghadirkan produk yang aman, lezat, dan berkelas bagi seluruh pelanggan setia kami.
+            Kami selalu berkomitmen untuk menggunakan bahan-bahan pilihan terbaik tanpa zat pengawet buatan, serta menjaga kebersihan proses produksi demi menghadirkan produk yang aman, lezat, dan berkelas bagi seluruh pelanggan setia kami.
           </p>
+          
+          <div className="features-grid">
+            <div className="feature-item">
+              <span className="feature-icon">🛡️</span>
+              <h4>Terdaftar P-IRT</h4>
+              <p>Higienis & Legalitas Resmi</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">👩‍🍳</span>
+              <h4>Homemade</h4>
+              <p>Dimasak fresh setiap hari</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🚫</span>
+              <h4>Tanpa Pengawet</h4>
+              <p>Aman untuk seluruh keluarga</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -59,8 +103,13 @@ function App() {
           {products.map((product) => (
             <div key={product.id} className="card product-card">
               <div className="product-image-wrapper">
-                <img src={product.img} alt={product.name} className="product-image" />
-                <span className="product-tag">{product.name}</span>
+                <img 
+                  src={process.env.PUBLIC_URL + product.img} 
+                  alt={product.name} 
+                  className="product-image" 
+                />
+                <span className="product-tag">{product.price}</span>
+                <span className="product-badge-overlay">{product.badge}</span>
               </div>
               <div className="product-info">
                 <h3>{product.name}</h3>
@@ -74,19 +123,37 @@ function App() {
       {/* FOOTER & CONTACT SECTION */}
       <footer className="footer-section">
         <div className="card footer-card">
-          <h2>Kontak & Alamat</h2>
-          <p className="address-text">
-            📍 <strong>Alamat:</strong> Jl. Estetika Cerah No. 45, Blok G-Z, Kota Kreatif, Indonesia
-          </p>
+          <h2>Informasi Pemesanan & Kontak</h2>
           
+          <p className="address-text">
+            📍 <strong>Alamat Produksi:</strong> Diri, Salaman, Kec. Salaman, Kabupaten Magelang, Jawa Tengah 56162
+          </p>
+
+          {/* CATATAN / INFORMASI KETENTUAN PEMESANAN */}
+          <div className="order-notes-box">
+            <h4>📌 Catatan Ketentuan Harga & Pemesanan:</h4>
+            <ul>
+              <li>
+                <strong>Pemesanan Khusus & Grosir:</strong> Kami melayani pemesanan skala besar (grosir), kemasan ball, ataupun *custom request* dengan penawaran harga khusus.
+              </li>
+              <li>
+                <strong>Penyesuaian Harga:</strong> Harga produk yang tertera dapat berubah sewaktu-waktu mengikuti ketersediaan bahan baku.
+              </li>
+              <li>
+                <strong>Konfirmasi Ketersediaan:</strong> Untuk memastikan ketersediaan stok produk terbaru serta mendapatkan rincian harga sesuai jumlah pesanan Anda, mohon menghubungi layanan pelanggan kami.
+              </li>
+            </ul>
+          </div>
+
           <a 
-            href="https://wa.me/6285713334967?text=Halo%20Bolu%20Emprit%203D,%20saya%20tertarik%20untuk%20tanya-tanya%20produk!" 
+            href="https://wa.me/6288221525781?text=Halo%20Bolu%20Emprit%203D,%20saya%20ingin%20bertanya%20mengenai%20ketersediaan%20stok%20dan%20penawaran%20harga%20produk." 
             target="_blank" 
             rel="noopener noreferrer" 
             className="whatsapp-btn"
           >
-            💬 Chat via WhatsApp (0857-1333-4967)
+            💬 Hubungi Layanan WhatsApp (0882-2152-5781)
           </a>
+
           <p className="copyright">© 2026 Bolu Emprit 3D. All Rights Reserved.</p>
         </div>
       </footer>
